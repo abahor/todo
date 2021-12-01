@@ -70,3 +70,9 @@ def done():
         abort(404)
     ta.done = True
     return "done"
+
+
+@main.route('/main_js')
+def main_js():
+    reque = request.args.get('id')
+    return render_template("main.js", t = reque)
