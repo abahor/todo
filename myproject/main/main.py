@@ -65,10 +65,11 @@ def add():
 @login_required
 def done():
     re = request.get('id')
-    ta = tasks.query.get(re)
+    ta = tasks.query.get_or_404(re)
     if ta.user_id != current_user.id:
         abort(404)
     ta.done = True
+    db.session.commit()
     return "done"
 
 
